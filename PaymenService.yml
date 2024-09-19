@@ -1,0 +1,621 @@
+asyncapi: 3.0.0
+info:
+  title: Automation ITOps Events
+  version: 1.0.0
+  description: >-
+    Documentación de los eventos emitidos y recibidos por el servicio ITOps.
+channels:
+  customerInvoiced:
+    address: customerInvoiced
+    messages:
+      handleCustomerInvoiced.message:
+        contentType: application/json
+        payload:
+          type: object
+          properties:
+            CustomerId:
+              type: string
+              format: uuid
+            InvoiceId:
+              type: string
+              format: uuid
+            InvoiceIssuedOn:
+              type: string
+              format: date-time
+    description: Evento emitido cuando un cliente es facturado.
+  invoiceCanceled:
+    address: invoiceCanceled
+    messages:
+      handleInvoiceCanceled.message:
+        contentType: application/json
+        payload:
+          type: object
+          properties:
+            InvoiceId:
+              type: string
+              format: uuid
+            CanceledOn:
+              type: string
+              format: date-time
+    description: Evento emitido cuando una factura es cancelada.
+  customRejectedInvoice:
+    address: customRejectedInvoice
+    messages:
+      handleCustomRejectedInvoice.message:
+        contentType: application/json
+        payload:
+          type: object
+          properties:
+            InvoiceId:
+              type: string
+              format: uuid
+            RejectedOn:
+              type: string
+              format: date-time
+    description: Evento emitido cuando una factura es rechazada por aduanas.
+  invoiceStamped:
+    address: invoiceStamped
+    messages:
+      handleInvoiceStamped.message:
+        contentType: application/json
+        payload:
+          type: object
+          properties:
+            InvoiceId:
+              type: string
+              format: uuid
+            StampedOn:
+              type: string
+              format: date-time
+    description: Evento emitido cuando una factura es sellada.
+  invoiceCommunicationToCustomFailed:
+    address: invoiceCommunicationToCustomFailed
+    messages:
+      handleInvoiceCommunicationToCustomFailed.message:
+        contentType: application/json
+        payload:
+          type: object
+          properties:
+            InvoiceId:
+              type: string
+              format: uuid
+            SentOn:
+              type: string
+              format: date-time
+            ErrorCode:
+              type: string
+            ErrorMessage:
+              type: string
+    description: Evento emitido cuando la comunicación de una factura a aduanas falla.
+  invoiceNotStampedOnTime:
+    address: invoiceNotStampedOnTime
+    messages:
+      handleInvoiceNotStampedOnTime.message:
+        contentType: application/json
+        payload:
+          type: object
+          properties:
+            InvoiceId:
+              type: string
+              format: uuid
+    description: Evento emitido cuando una factura no es sellada a tiempo.
+  customerSignedUp:
+    address: customerSignedUp
+    messages:
+      handleCustomerSignedUp.message:
+        contentType: application/json
+        payload:
+          type: object
+          properties:
+            CustomerId:
+              type: string
+              format: uuid
+    description: Evento emitido cuando un cliente se registra.
+  customerPassportUpdated:
+    address: customerPassportUpdated
+    messages:
+      handleCustomerPassportUpdated.message:
+        contentType: application/json
+        payload:
+          type: object
+          properties:
+            CustomerId:
+              type: string
+              format: uuid
+    description: Evento emitido cuando el pasaporte de un cliente es actualizado.
+  merchantSignedUpCustomer:
+    address: merchantSignedUpCustomer
+    messages:
+      handleMerchantSignedUpCustomer.message:
+        contentType: application/json
+        payload:
+          type: object
+          properties:
+            CustomerId:
+              type: string
+              format: uuid
+    description: Evento emitido cuando un comerciante registra a un cliente.
+  customerPhoneNumberUpdated:
+    address: customerPhoneNumberUpdated
+    messages:
+      handleCustomerPhoneNumberUpdated.message:
+        contentType: application/json
+        payload:
+          type: object
+          properties:
+            CustomerId:
+              type: string
+              format: uuid
+            PhoneNumber:
+              type: string
+    description: Evento emitido cuando el número de teléfono de un cliente es actualizado.
+  customerResidencyUpdated:
+    address: customerResidencyUpdated
+    messages:
+      handleCustomerResidencyUpdated.message:
+        contentType: application/json
+        payload:
+          type: object
+          properties:
+            CustomerId:
+              type: string
+              format: uuid
+    description: Evento emitido cuando la residencia de un cliente es actualizada.
+  customerInstalledCustomerApp:
+    address: customerInstalledCustomerApp
+    messages:
+      handleCustomerInstalledCustomerApp.message:
+        contentType: application/json
+        payload:
+          type: object
+          properties:
+            CustomerId:
+              type: string
+              format: uuid
+    description: Evento emitido cuando un cliente instala la aplicación.
+  merchantAuthenticationAccountCreated:
+    address: merchantAuthenticationAccountCreated
+    messages:
+      handleMerchantAuthenticationAccountCreated.message:
+        contentType: application/json
+        payload:
+          type: object
+          properties:
+            MerchantId:
+              type: string
+              format: uuid
+            AccountId:
+              type: string
+              format: uuid
+    description: Evento emitido cuando se crea una cuenta de autenticación de comerciante.
+  merchantLegalRepresentativeAuthenticationAccountCreated:
+    address: merchantLegalRepresentativeAuthenticationAccountCreated
+    messages:
+      handleMerchantLegalRepresentativeAuthenticationAccountCreated.message:
+        contentType: application/json
+        payload:
+          type: object
+          properties:
+            MerchantId:
+              type: string
+              format: uuid
+            AccountId:
+              type: string
+              format: uuid
+    description: >-
+      Evento emitido cuando se crea una cuenta de autenticación de representante
+      legal de comerciante.
+  merchantAccountConnectedToStore:
+    address: merchantAccountConnectedToStore
+    messages:
+      handleMerchantAccountConnectedToStore.message:
+        contentType: application/json
+        payload:
+          type: object
+          properties:
+            StoreId:
+              type: string
+              format: uuid
+            AccountId:
+              type: string
+              format: uuid
+    description: Evento emitido cuando una cuenta de comerciante se conecta a una tienda.
+  merchantLegalCompanyAdded:
+    address: merchantLegalCompanyAdded
+    messages:
+      handleMerchantLegalCompanyAdded.message:
+        contentType: application/json
+        payload:
+          type: object
+          properties:
+            MerchantId:
+              type: string
+              format: uuid
+    description: Evento emitido cuando se añade una compañía legal de comerciante.
+  merchantLegalCompanyNameChanged:
+    address: merchantLegalCompanyNameChanged
+    messages:
+      handleMerchantLegalCompanyNameChanged.message:
+        contentType: application/json
+        payload:
+          type: object
+          properties:
+            MerchantId:
+              type: string
+              format: uuid
+    description: >-
+      Evento emitido cuando se cambia el nombre de una compañía legal de
+      comerciante.
+  newMerchantSignedUp:
+    address: newMerchantSignedUp
+    messages:
+      handleNewMerchantSignedUp.message:
+        contentType: application/json
+        payload:
+          type: object
+          properties:
+            MerchantId:
+              type: string
+              format: uuid
+            SignUpRequestId:
+              type: string
+              format: uuid
+            SignedUpOn:
+              type: string
+              format: date-time
+            Type:
+              type: string
+    description: Evento emitido cuando un nuevo comerciante se registra.
+  merchantSignedTermsAndConditions:
+    address: merchantSignedTermsAndConditions
+    messages:
+      handleMerchantSignedTermsAndConditions.message:
+        contentType: application/json
+        payload:
+          type: object
+          properties:
+            MerchantId:
+              type: string
+              format: uuid
+            SignedOn:
+              type: string
+              format: date-time
+    description: Evento emitido cuando un comerciante firma los términos y condiciones.
+  otelloAuthenticationCertificateProvided:
+    address: otelloAuthenticationCertificateProvided
+    messages:
+      handleOtelloAuthenticationCertificateProvided.message:
+        contentType: application/json
+        payload:
+          type: object
+          properties:
+            MerchantId:
+              type: string
+              format: uuid
+    description: >-
+      Evento emitido cuando se proporciona un certificado de autenticación
+      Otello.
+  merchantSubscriptionStarted:
+    address: merchantSubscriptionStarted
+    messages:
+      handleMerchantSubscriptionStarted.message:
+        contentType: application/json
+        payload:
+          type: object
+          properties:
+            MerchantId:
+              type: string
+              format: uuid
+            SubscriptionType:
+              type: string
+    description: Evento emitido cuando una suscripción de comerciante comienza.
+  customerImpersonationRequested:
+    address: customerImpersonationRequested
+    messages:
+      handleCustomerImpersonationRequested.message:
+        contentType: application/json
+        payload:
+          type: object
+          properties:
+            RequestId:
+              type: string
+              format: uuid
+            RequestedByAccountId:
+              type: string
+              format: uuid
+            RequestedOn:
+              type: string
+              format: date-time
+    description: Evento emitido cuando se solicita la suplantación de un cliente.
+  customerImpersonationCompleted:
+    address: customerImpersonationCompleted
+    messages:
+      handleCustomerImpersonationCompleted.message:
+        contentType: application/json
+        payload:
+          type: object
+          properties:
+            RequestId:
+              type: string
+              format: uuid
+            RequestedByAccountId:
+              type: string
+              format: uuid
+            CompletedOn:
+              type: string
+              format: date-time
+    description: Evento emitido cuando se completa la suplantación de un cliente.
+  processIntercomConversationReply:
+    address: processIntercomConversationReply
+    messages:
+      handleProcessIntercomConversationReply.message:
+        contentType: application/json
+        payload:
+          type: object
+          properties:
+            ConversationId:
+              type: string
+              format: uuid
+            Message:
+              type: string
+    description: >-
+      Evento emitido cuando se procesa una respuesta de conversación de
+      Intercom.
+  processWeChatMessage:
+    address: processWeChatMessage
+    messages:
+      handleProcessWeChatMessage.message:
+        contentType: application/json
+        payload:
+          type: object
+          properties:
+            WeChatOpenId:
+              type: string
+            Message:
+              type: string
+    description: Evento emitido cuando se procesa un mensaje de WeChat.
+  processTwilioSms:
+    address: processTwilioSms
+    messages:
+      handleProcessTwilioSms.message:
+        contentType: application/json
+        payload:
+          type: object
+          properties:
+            CustomerPhoneNumber:
+              type: string
+            Message:
+              type: string
+    description: Evento emitido cuando se procesa un SMS de Twilio.
+  processIntercomConversationClosed:
+    address: processIntercomConversationClosed
+    messages:
+      handleProcessIntercomConversationClosed.message:
+        contentType: application/json
+        payload:
+          type: object
+          properties:
+            ConversationId:
+              type: string
+              format: uuid
+    description: Evento emitido cuando se cierra una conversación de Intercom.
+operations:
+  handleCustomerInvoiced:
+    action: send
+    channel:
+      $ref: '#/channels/customerInvoiced'
+    summary: Maneja el evento de facturación de un cliente.
+    messages:
+      - $ref: '#/channels/customerInvoiced/messages/handleCustomerInvoiced.message'
+  handleInvoiceCanceled:
+    action: send
+    channel:
+      $ref: '#/channels/invoiceCanceled'
+    summary: Maneja el evento de cancelación de una factura.
+    messages:
+      - $ref: '#/channels/invoiceCanceled/messages/handleInvoiceCanceled.message'
+  handleCustomRejectedInvoice:
+    action: send
+    channel:
+      $ref: '#/channels/customRejectedInvoice'
+    summary: Maneja el evento de rechazo de una factura por aduanas.
+    messages:
+      - $ref: >-
+          #/channels/customRejectedInvoice/messages/handleCustomRejectedInvoice.message
+  handleInvoiceStamped:
+    action: send
+    channel:
+      $ref: '#/channels/invoiceStamped'
+    summary: Maneja el evento de sellado de una factura.
+    messages:
+      - $ref: '#/channels/invoiceStamped/messages/handleInvoiceStamped.message'
+  handleInvoiceCommunicationToCustomFailed:
+    action: send
+    channel:
+      $ref: '#/channels/invoiceCommunicationToCustomFailed'
+    summary: Maneja el evento de fallo en la comunicación de una factura a aduanas.
+    messages:
+      - $ref: >-
+          #/channels/invoiceCommunicationToCustomFailed/messages/handleInvoiceCommunicationToCustomFailed.message
+  handleInvoiceNotStampedOnTime:
+    action: send
+    channel:
+      $ref: '#/channels/invoiceNotStampedOnTime'
+    summary: Maneja el evento de una factura no sellada a tiempo.
+    messages:
+      - $ref: >-
+          #/channels/invoiceNotStampedOnTime/messages/handleInvoiceNotStampedOnTime.message
+  handleCustomerSignedUp:
+    action: send
+    channel:
+      $ref: '#/channels/customerSignedUp'
+    summary: Maneja el evento de registro de un cliente.
+    messages:
+      - $ref: '#/channels/customerSignedUp/messages/handleCustomerSignedUp.message'
+  handleCustomerPassportUpdated:
+    action: send
+    channel:
+      $ref: '#/channels/customerPassportUpdated'
+    summary: Maneja el evento de actualización del pasaporte de un cliente.
+    messages:
+      - $ref: >-
+          #/channels/customerPassportUpdated/messages/handleCustomerPassportUpdated.message
+  handleMerchantSignedUpCustomer:
+    action: send
+    channel:
+      $ref: '#/channels/merchantSignedUpCustomer'
+    summary: Maneja el evento de registro de un cliente por parte de un comerciante.
+    messages:
+      - $ref: >-
+          #/channels/merchantSignedUpCustomer/messages/handleMerchantSignedUpCustomer.message
+  handleCustomerPhoneNumberUpdated:
+    action: send
+    channel:
+      $ref: '#/channels/customerPhoneNumberUpdated'
+    summary: Maneja el evento de actualización del número de teléfono de un cliente.
+    messages:
+      - $ref: >-
+          #/channels/customerPhoneNumberUpdated/messages/handleCustomerPhoneNumberUpdated.message
+  handleCustomerResidencyUpdated:
+    action: send
+    channel:
+      $ref: '#/channels/customerResidencyUpdated'
+    summary: Maneja el evento de actualización de la residencia de un cliente.
+    messages:
+      - $ref: >-
+          #/channels/customerResidencyUpdated/messages/handleCustomerResidencyUpdated.message
+  handleCustomerInstalledCustomerApp:
+    action: send
+    channel:
+      $ref: '#/channels/customerInstalledCustomerApp'
+    summary: Maneja el evento de instalación de la aplicación por parte de un cliente.
+    messages:
+      - $ref: >-
+          #/channels/customerInstalledCustomerApp/messages/handleCustomerInstalledCustomerApp.message
+  handleMerchantAuthenticationAccountCreated:
+    action: send
+    channel:
+      $ref: '#/channels/merchantAuthenticationAccountCreated'
+    summary: >-
+      Maneja el evento de creación de una cuenta de autenticación de
+      comerciante.
+    messages:
+      - $ref: >-
+          #/channels/merchantAuthenticationAccountCreated/messages/handleMerchantAuthenticationAccountCreated.message
+  handleMerchantLegalRepresentativeAuthenticationAccountCreated:
+    action: send
+    channel:
+      $ref: '#/channels/merchantLegalRepresentativeAuthenticationAccountCreated'
+    summary: >-
+      Maneja el evento de creación de una cuenta de autenticación de
+      representante legal de comerciante.
+    messages:
+      - $ref: >-
+          #/channels/merchantLegalRepresentativeAuthenticationAccountCreated/messages/handleMerchantLegalRepresentativeAuthenticationAccountCreated.message
+  handleMerchantAccountConnectedToStore:
+    action: send
+    channel:
+      $ref: '#/channels/merchantAccountConnectedToStore'
+    summary: Maneja el evento de conexión de una cuenta de comerciante a una tienda.
+    messages:
+      - $ref: >-
+          #/channels/merchantAccountConnectedToStore/messages/handleMerchantAccountConnectedToStore.message
+  handleMerchantLegalCompanyAdded:
+    action: send
+    channel:
+      $ref: '#/channels/merchantLegalCompanyAdded'
+    summary: Maneja el evento de adición de una compañía legal de comerciante.
+    messages:
+      - $ref: >-
+          #/channels/merchantLegalCompanyAdded/messages/handleMerchantLegalCompanyAdded.message
+  handleMerchantLegalCompanyNameChanged:
+    action: send
+    channel:
+      $ref: '#/channels/merchantLegalCompanyNameChanged'
+    summary: Maneja el evento de cambio de nombre de una compañía legal de comerciante.
+    messages:
+      - $ref: >-
+          #/channels/merchantLegalCompanyNameChanged/messages/handleMerchantLegalCompanyNameChanged.message
+  handleNewMerchantSignedUp:
+    action: send
+    channel:
+      $ref: '#/channels/newMerchantSignedUp'
+    summary: Maneja el evento de registro de un nuevo comerciante.
+    messages:
+      - $ref: >-
+          #/channels/newMerchantSignedUp/messages/handleNewMerchantSignedUp.message
+  handleMerchantSignedTermsAndConditions:
+    action: send
+    channel:
+      $ref: '#/channels/merchantSignedTermsAndConditions'
+    summary: >-
+      Maneja el evento de firma de términos y condiciones por parte de un
+      comerciante.
+    messages:
+      - $ref: >-
+          #/channels/merchantSignedTermsAndConditions/messages/handleMerchantSignedTermsAndConditions.message
+  handleOtelloAuthenticationCertificateProvided:
+    action: send
+    channel:
+      $ref: '#/channels/otelloAuthenticationCertificateProvided'
+    summary: Maneja el evento de provisión de un certificado de autenticación Otello.
+    messages:
+      - $ref: >-
+          #/channels/otelloAuthenticationCertificateProvided/messages/handleOtelloAuthenticationCertificateProvided.message
+  handleMerchantSubscriptionStarted:
+    action: send
+    channel:
+      $ref: '#/channels/merchantSubscriptionStarted'
+    summary: Maneja el evento de inicio de una suscripción de comerciante.
+    messages:
+      - $ref: >-
+          #/channels/merchantSubscriptionStarted/messages/handleMerchantSubscriptionStarted.message
+  handleCustomerImpersonationRequested:
+    action: send
+    channel:
+      $ref: '#/channels/customerImpersonationRequested'
+    summary: Maneja el evento de solicitud de suplantación de un cliente.
+    messages:
+      - $ref: >-
+          #/channels/customerImpersonationRequested/messages/handleCustomerImpersonationRequested.message
+  handleCustomerImpersonationCompleted:
+    action: send
+    channel:
+      $ref: '#/channels/customerImpersonationCompleted'
+    summary: Maneja el evento de completación de suplantación de un cliente.
+    messages:
+      - $ref: >-
+          #/channels/customerImpersonationCompleted/messages/handleCustomerImpersonationCompleted.message
+  handleProcessIntercomConversationReply:
+    action: send
+    channel:
+      $ref: '#/channels/processIntercomConversationReply'
+    summary: >-
+      Maneja el evento de procesamiento de una respuesta de conversación de
+      Intercom.
+    messages:
+      - $ref: >-
+          #/channels/processIntercomConversationReply/messages/handleProcessIntercomConversationReply.message
+  handleProcessWeChatMessage:
+    action: send
+    channel:
+      $ref: '#/channels/processWeChatMessage'
+    summary: Maneja el evento de procesamiento de un mensaje de WeChat.
+    messages:
+      - $ref: >-
+          #/channels/processWeChatMessage/messages/handleProcessWeChatMessage.message
+  handleProcessTwilioSms:
+    action: send
+    channel:
+      $ref: '#/channels/processTwilioSms'
+    summary: Maneja el evento de procesamiento de un SMS de Twilio.
+    messages:
+      - $ref: '#/channels/processTwilioSms/messages/handleProcessTwilioSms.message'
+  handleProcessIntercomConversationClosed:
+    action: send
+    channel:
+      $ref: '#/channels/processIntercomConversationClosed'
+    summary: Maneja el evento de cierre de una conversación de Intercom.
+    messages:
+      - $ref: >-
+          #/channels/processIntercomConversationClosed/messages/handleProcessIntercomConversationClosed.message
