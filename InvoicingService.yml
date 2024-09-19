@@ -1,0 +1,478 @@
+asyncapi: 3.0.0
+info:
+  title: Stamp Invoicing Service
+  version: 1.0.0
+  description: AsyncAPI documentation for Stamp Invoicing Service.
+servers:
+  production:
+    host: api.stampinvoicing.com
+    protocol: https
+channels:
+  customerInvoiced:
+    address: customerInvoiced
+    messages:
+      subscribe.message:
+        contentType: application/json
+        payload:
+          type: object
+          properties:
+            customerId:
+              type: string
+              format: uuid
+            invoiceId:
+              type: string
+              format: uuid
+    description: Event triggered when a customer is invoiced.
+  invoiceStamped:
+    address: invoiceStamped
+    messages:
+      subscribe.message:
+        contentType: application/json
+        payload:
+          type: object
+          properties:
+            invoiceId:
+              type: string
+              format: uuid
+    description: Event triggered when an invoice is stamped.
+  maxTimeReachedToStampInvoice:
+    address: maxTimeReachedToStampInvoice
+    messages:
+      subscribe.message:
+        contentType: application/json
+        payload:
+          type: object
+          properties:
+            invoiceId:
+              type: string
+              format: uuid
+    description: Event triggered when the maximum time to stamp an invoice is reached.
+  merchantLegalCompanyAdded:
+    address: merchantLegalCompanyAdded
+    messages:
+      subscribe.message:
+        contentType: application/json
+        payload:
+          type: object
+          properties:
+            merchantId:
+              type: string
+              format: uuid
+    description: Event triggered when a merchant legal company is added.
+  customRejectedInvoice:
+    address: customRejectedInvoice
+    messages:
+      subscribe.message:
+        contentType: application/json
+        payload:
+          type: object
+          properties:
+            invoiceId:
+              type: string
+              format: uuid
+    description: Event triggered when a custom invoice is rejected.
+  invoiceNoteIssued:
+    address: invoiceNoteIssued
+    messages:
+      subscribe.message:
+        contentType: application/json
+        payload:
+          type: object
+          properties:
+            invoiceId:
+              type: string
+              format: uuid
+    description: Event triggered when an invoice note is issued.
+  invoiceCanceled:
+    address: invoiceCanceled
+    messages:
+      subscribe.message:
+        contentType: application/json
+        payload:
+          type: object
+          properties:
+            invoiceId:
+              type: string
+              format: uuid
+    description: Event triggered when an invoice is canceled.
+  invoiceNoteNumberAssigned:
+    address: invoiceNoteNumberAssigned
+    messages:
+      subscribe.message:
+        contentType: application/json
+        payload:
+          type: object
+          properties:
+            invoiceId:
+              type: string
+              format: uuid
+    description: Event triggered when an invoice note number is assigned.
+  customerIsPremium:
+    address: customerIsPremium
+    messages:
+      subscribe.message:
+        contentType: application/json
+        payload:
+          type: object
+          properties:
+            customerId:
+              type: string
+              format: uuid
+    description: Event triggered when a customer becomes premium.
+  customerPremiumSubscriptionLevelUpgraded:
+    address: customerPremiumSubscriptionLevelUpgraded
+    messages:
+      subscribe.message:
+        contentType: application/json
+        payload:
+          type: object
+          properties:
+            customerId:
+              type: string
+              format: uuid
+    description: Event triggered when a customer's premium subscription level is upgraded.
+  customerRedeemedPremiumSubscriptionDiscountCode:
+    address: customerRedeemedPremiumSubscriptionDiscountCode
+    messages:
+      subscribe.message:
+        contentType: application/json
+        payload:
+          type: object
+          properties:
+            customerId:
+              type: string
+              format: uuid
+    description: >-
+      Event triggered when a customer redeems a premium subscription discount
+      code.
+  customerPremiumSubscriptionDiscountCodeExpired:
+    address: customerPremiumSubscriptionDiscountCodeExpired
+    messages:
+      subscribe.message:
+        contentType: application/json
+        payload:
+          type: object
+          properties:
+            customerId:
+              type: string
+              format: uuid
+    description: >-
+      Event triggered when a customer's premium subscription discount code
+      expires.
+  invoiceNotStampedOnTime:
+    address: invoiceNotStampedOnTime
+    messages:
+      subscribe.message:
+        contentType: application/json
+        payload:
+          type: object
+          properties:
+            invoiceId:
+              type: string
+              format: uuid
+    description: Event triggered when an invoice is not stamped on time.
+  manualPayoutPaid:
+    address: manualPayoutPaid
+    messages:
+      subscribe.message:
+        contentType: application/json
+        payload:
+          type: object
+          properties:
+            payoutId:
+              type: string
+              format: uuid
+    description: Event triggered when a manual payout is paid.
+  merchantManualTransferCreated:
+    address: merchantManualTransferCreated
+    messages:
+      subscribe.message:
+        contentType: application/json
+        payload:
+          type: object
+          properties:
+            transferId:
+              type: string
+              format: uuid
+    description: Event triggered when a merchant manual transfer is created.
+  invoiceDebitNoteForPaidVatIssued:
+    address: invoiceDebitNoteForPaidVatIssued
+    messages:
+      subscribe.message:
+        contentType: application/json
+        payload:
+          type: object
+          properties:
+            invoiceId:
+              type: string
+              format: uuid
+    description: Event triggered when an invoice debit note for paid VAT is issued.
+  invoiceDebitNoteForFailedVatIssued:
+    address: invoiceDebitNoteForFailedVatIssued
+    messages:
+      subscribe.message:
+        contentType: application/json
+        payload:
+          type: object
+          properties:
+            invoiceId:
+              type: string
+              format: uuid
+    description: Event triggered when an invoice debit note for failed VAT is issued.
+  merchantPremiumSubscriptionPeriodEnded:
+    address: merchantPremiumSubscriptionPeriodEnded
+    messages:
+      subscribe.message:
+        contentType: application/json
+        payload:
+          type: object
+          properties:
+            merchantId:
+              type: string
+              format: uuid
+    description: Event triggered when a merchant's premium subscription period ends.
+  customerProvidedBankDetailsForVatRefund:
+    address: customerProvidedBankDetailsForVatRefund
+    messages:
+      subscribe.message:
+        contentType: application/json
+        payload:
+          type: object
+          properties:
+            customerId:
+              type: string
+              format: uuid
+    description: Event triggered when a customer provides bank details for VAT refund.
+  revolutCustomerVatPaymentRefundCompleted:
+    address: revolutCustomerVatPaymentRefundCompleted
+    messages:
+      subscribe.message:
+        contentType: application/json
+        payload:
+          type: object
+          properties:
+            customerId:
+              type: string
+              format: uuid
+    description: Event triggered when a Revolut customer VAT payment refund is completed.
+  invoiceCommunicationToCustomFailed:
+    address: invoiceCommunicationToCustomFailed
+    messages:
+      publish.message:
+        contentType: application/json
+        payload:
+          type: object
+          properties:
+            invoiceId:
+              type: string
+              format: uuid
+            errorCode:
+              type: string
+            errorMessage:
+              type: string
+      subscribe.message:
+        contentType: application/json
+        payload:
+          type: object
+          properties:
+            invoiceId:
+              type: string
+              format: uuid
+    description: Event triggered when invoice communication to custom fails.
+  insertProductsFromInvoiceCommand:
+    address: insertProductsFromInvoiceCommand
+    messages:
+      subscribe.message:
+        contentType: application/json
+        payload:
+          type: object
+          properties:
+            invoiceId:
+              type: string
+              format: uuid
+    description: Command to insert products from an invoice.
+operations:
+  customerInvoiced.subscribe:
+    action: send
+    channel:
+      $ref: '#/channels/customerInvoiced'
+    summary: Receive a notification when a customer is invoiced.
+    messages:
+      - $ref: '#/channels/customerInvoiced/messages/subscribe.message'
+  invoiceStamped.subscribe:
+    action: send
+    channel:
+      $ref: '#/channels/invoiceStamped'
+    summary: Receive a notification when an invoice is stamped.
+    messages:
+      - $ref: '#/channels/invoiceStamped/messages/subscribe.message'
+  maxTimeReachedToStampInvoice.subscribe:
+    action: send
+    channel:
+      $ref: '#/channels/maxTimeReachedToStampInvoice'
+    summary: >-
+      Receive a notification when the maximum time to stamp an invoice is
+      reached.
+    messages:
+      - $ref: '#/channels/maxTimeReachedToStampInvoice/messages/subscribe.message'
+  merchantLegalCompanyAdded.subscribe:
+    action: send
+    channel:
+      $ref: '#/channels/merchantLegalCompanyAdded'
+    summary: Receive a notification when a merchant legal company is added.
+    messages:
+      - $ref: '#/channels/merchantLegalCompanyAdded/messages/subscribe.message'
+  customRejectedInvoice.subscribe:
+    action: send
+    channel:
+      $ref: '#/channels/customRejectedInvoice'
+    summary: Receive a notification when a custom invoice is rejected.
+    messages:
+      - $ref: '#/channels/customRejectedInvoice/messages/subscribe.message'
+  invoiceNoteIssued.subscribe:
+    action: send
+    channel:
+      $ref: '#/channels/invoiceNoteIssued'
+    summary: Receive a notification when an invoice note is issued.
+    messages:
+      - $ref: '#/channels/invoiceNoteIssued/messages/subscribe.message'
+  invoiceCanceled.subscribe:
+    action: send
+    channel:
+      $ref: '#/channels/invoiceCanceled'
+    summary: Receive a notification when an invoice is canceled.
+    messages:
+      - $ref: '#/channels/invoiceCanceled/messages/subscribe.message'
+  invoiceNoteNumberAssigned.subscribe:
+    action: send
+    channel:
+      $ref: '#/channels/invoiceNoteNumberAssigned'
+    summary: Receive a notification when an invoice note number is assigned.
+    messages:
+      - $ref: '#/channels/invoiceNoteNumberAssigned/messages/subscribe.message'
+  customerIsPremium.subscribe:
+    action: send
+    channel:
+      $ref: '#/channels/customerIsPremium'
+    summary: Receive a notification when a customer becomes premium.
+    messages:
+      - $ref: '#/channels/customerIsPremium/messages/subscribe.message'
+  customerPremiumSubscriptionLevelUpgraded.subscribe:
+    action: send
+    channel:
+      $ref: '#/channels/customerPremiumSubscriptionLevelUpgraded'
+    summary: >-
+      Receive a notification when a customer's premium subscription level is
+      upgraded.
+    messages:
+      - $ref: >-
+          #/channels/customerPremiumSubscriptionLevelUpgraded/messages/subscribe.message
+  customerRedeemedPremiumSubscriptionDiscountCode.subscribe:
+    action: send
+    channel:
+      $ref: '#/channels/customerRedeemedPremiumSubscriptionDiscountCode'
+    summary: >-
+      Receive a notification when a customer redeems a premium subscription
+      discount code.
+    messages:
+      - $ref: >-
+          #/channels/customerRedeemedPremiumSubscriptionDiscountCode/messages/subscribe.message
+  customerPremiumSubscriptionDiscountCodeExpired.subscribe:
+    action: send
+    channel:
+      $ref: '#/channels/customerPremiumSubscriptionDiscountCodeExpired'
+    summary: >-
+      Receive a notification when a customer's premium subscription discount
+      code expires.
+    messages:
+      - $ref: >-
+          #/channels/customerPremiumSubscriptionDiscountCodeExpired/messages/subscribe.message
+  invoiceNotStampedOnTime.subscribe:
+    action: send
+    channel:
+      $ref: '#/channels/invoiceNotStampedOnTime'
+    summary: Receive a notification when an invoice is not stamped on time.
+    messages:
+      - $ref: '#/channels/invoiceNotStampedOnTime/messages/subscribe.message'
+  manualPayoutPaid.subscribe:
+    action: send
+    channel:
+      $ref: '#/channels/manualPayoutPaid'
+    summary: Receive a notification when a manual payout is paid.
+    messages:
+      - $ref: '#/channels/manualPayoutPaid/messages/subscribe.message'
+  merchantManualTransferCreated.subscribe:
+    action: send
+    channel:
+      $ref: '#/channels/merchantManualTransferCreated'
+    summary: Receive a notification when a merchant manual transfer is created.
+    messages:
+      - $ref: '#/channels/merchantManualTransferCreated/messages/subscribe.message'
+  invoiceDebitNoteForPaidVatIssued.subscribe:
+    action: send
+    channel:
+      $ref: '#/channels/invoiceDebitNoteForPaidVatIssued'
+    summary: Receive a notification when an invoice debit note for paid VAT is issued.
+    messages:
+      - $ref: '#/channels/invoiceDebitNoteForPaidVatIssued/messages/subscribe.message'
+  invoiceDebitNoteForFailedVatIssued.subscribe:
+    action: send
+    channel:
+      $ref: '#/channels/invoiceDebitNoteForFailedVatIssued'
+    summary: >-
+      Receive a notification when an invoice debit note for failed VAT is
+      issued.
+    messages:
+      - $ref: >-
+          #/channels/invoiceDebitNoteForFailedVatIssued/messages/subscribe.message
+  merchantPremiumSubscriptionPeriodEnded.subscribe:
+    action: send
+    channel:
+      $ref: '#/channels/merchantPremiumSubscriptionPeriodEnded'
+    summary: Receive a notification when a merchant's premium subscription period ends.
+    messages:
+      - $ref: >-
+          #/channels/merchantPremiumSubscriptionPeriodEnded/messages/subscribe.message
+  customerProvidedBankDetailsForVatRefund.subscribe:
+    action: send
+    channel:
+      $ref: '#/channels/customerProvidedBankDetailsForVatRefund'
+    summary: >-
+      Receive a notification when a customer provides bank details for VAT
+      refund.
+    messages:
+      - $ref: >-
+          #/channels/customerProvidedBankDetailsForVatRefund/messages/subscribe.message
+  revolutCustomerVatPaymentRefundCompleted.subscribe:
+    action: send
+    channel:
+      $ref: '#/channels/revolutCustomerVatPaymentRefundCompleted'
+    summary: >-
+      Receive a notification when a Revolut customer VAT payment refund is
+      completed.
+    messages:
+      - $ref: >-
+          #/channels/revolutCustomerVatPaymentRefundCompleted/messages/subscribe.message
+  invoiceCommunicationToCustomFailed.subscribe:
+    action: send
+    channel:
+      $ref: '#/channels/invoiceCommunicationToCustomFailed'
+    summary: Receive a notification when invoice communication to custom fails.
+    messages:
+      - $ref: >-
+          #/channels/invoiceCommunicationToCustomFailed/messages/subscribe.message
+  insertProductsFromInvoiceCommand.subscribe:
+    action: send
+    channel:
+      $ref: '#/channels/insertProductsFromInvoiceCommand'
+    summary: Receive a command to insert products from an invoice.
+    messages:
+      - $ref: '#/channels/insertProductsFromInvoiceCommand/messages/subscribe.message'
+  invoiceCommunicationToCustomFailed.publish:
+    action: receive
+    channel:
+      $ref: '#/channels/invoiceCommunicationToCustomFailed'
+    summary: Notify when invoice communication to custom fails.
+    messages:
+      - $ref: >-
+          #/channels/invoiceCommunicationToCustomFailed/messages/publish.message
