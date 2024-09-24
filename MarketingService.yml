@@ -1,0 +1,682 @@
+asyncapi: 3.0.0
+info:
+  title: Marketing Service Events
+  version: 1.0.0
+  description: >-
+    AsyncAPI documentation for events handled and emitted by the Marketing
+    Service.
+channels:
+  customerIsPremium:
+    address: customerIsPremium
+    messages:
+      emitCustomerIsPremium.message:
+        $ref: '#/components/messages/CustomerIsPremium'
+      handleCustomerIsPremium.message:
+        $ref: '#/components/messages/CustomerIsPremium'
+  customerPremiumSubscriptionLevelUpgraded:
+    address: customerPremiumSubscriptionLevelUpgraded
+    messages:
+      emitCustomerPremiumSubscriptionLevelUpgraded.message:
+        $ref: '#/components/messages/CustomerPremiumSubscriptionLevelUpgraded'
+      handleCustomerPremiumSubscriptionLevelUpgraded.message:
+        $ref: '#/components/messages/CustomerPremiumSubscriptionLevelUpgraded'
+  notifyCustomerAboutPremium:
+    address: notifyCustomerAboutPremium
+    messages:
+      emitNotifyCustomerAboutPremium.message:
+        $ref: '#/components/messages/NotifyCustomerAboutPremium'
+      handleNotifyCustomerAboutPremium.message:
+        $ref: '#/components/messages/NotifyCustomerAboutPremium'
+  customerInvoiced:
+    address: customerInvoiced
+    messages:
+      handleCustomerInvoiced.message:
+        $ref: '#/components/messages/CustomerInvoiced'
+  invoiceCanceled:
+    address: invoiceCanceled
+    messages:
+      handleInvoiceCanceled.message:
+        $ref: '#/components/messages/InvoiceCanceled'
+  customRejectedInvoice:
+    address: customRejectedInvoice
+    messages:
+      handleCustomRejectedInvoice.message:
+        $ref: '#/components/messages/CustomRejectedInvoice'
+  invoiceStamped:
+    address: invoiceStamped
+    messages:
+      handleInvoiceStamped.message:
+        $ref: '#/components/messages/InvoiceStamped'
+  invoiceNotStampedOnTime:
+    address: invoiceNotStampedOnTime
+    messages:
+      handleInvoiceNotStampedOnTime.message:
+        $ref: '#/components/messages/InvoiceNotStampedOnTime'
+  merchantSignedTermsAndConditions:
+    address: merchantSignedTermsAndConditions
+    messages:
+      handleMerchantSignedTermsAndConditions.message:
+        $ref: '#/components/messages/MerchantSignedTermsAndConditions'
+  startMerchantSubscription:
+    address: startMerchantSubscription
+    messages:
+      handleStartMerchantSubscription.message:
+        $ref: '#/components/messages/StartMerchantSubscription'
+  startNewMerchantSubscriptionPeriod:
+    address: startNewMerchantSubscriptionPeriod
+    messages:
+      handleStartNewMerchantSubscriptionPeriod.message:
+        $ref: '#/components/messages/StartNewMerchantSubscriptionPeriod'
+  merchantSubscriptionCanceled:
+    address: merchantSubscriptionCanceled
+    messages:
+      emitMerchantSubscriptionCanceled.message:
+        $ref: '#/components/messages/MerchantSubscriptionCanceled'
+      handleMerchantSubscriptionCanceled.message:
+        $ref: '#/components/messages/MerchantSubscriptionCanceled'
+  checkCustomerPremiumSubscriptionStatus:
+    address: checkCustomerPremiumSubscriptionStatus
+    messages:
+      handleCheckCustomerPremiumSubscriptionStatus.message:
+        $ref: '#/components/messages/CheckCustomerPremiumSubscriptionStatus'
+  referredMerchantSignedUp:
+    address: referredMerchantSignedUp
+    messages:
+      emitReferredMerchantSignedUp.message:
+        $ref: '#/components/messages/ReferredMerchantSignedUp'
+      handleReferredMerchantSignedUp.message:
+        $ref: '#/components/messages/ReferredMerchantSignedUp'
+  merchantPaymentMethodAdded:
+    address: merchantPaymentMethodAdded
+    messages:
+      handleMerchantPaymentMethodAdded.message:
+        $ref: '#/components/messages/MerchantPaymentMethodAdded'
+  referredMerchantIssuedFirstInvoice:
+    address: referredMerchantIssuedFirstInvoice
+    messages:
+      emitReferredMerchantIssuedFirstInvoice.message:
+        $ref: '#/components/messages/ReferredMerchantIssuedFirstInvoice'
+  merchantPremiumSubscriptionPeriodEnded:
+    address: merchantPremiumSubscriptionPeriodEnded
+    messages:
+      emitMerchantPremiumSubscriptionPeriodEnded.message:
+        $ref: '#/components/messages/MerchantPremiumSubscriptionPeriodEnded'
+  merchantPremiumSubscriptionPeriodStarted:
+    address: merchantPremiumSubscriptionPeriodStarted
+    messages:
+      emitMerchantPremiumSubscriptionPeriodStarted.message:
+        $ref: '#/components/messages/MerchantPremiumSubscriptionPeriodStarted'
+  merchantSubscriptionStarted:
+    address: merchantSubscriptionStarted
+    messages:
+      emitMerchantSubscriptionStarted.message:
+        $ref: '#/components/messages/MerchantSubscriptionStarted'
+  customerDiscountExpired:
+    address: customerDiscountExpired
+    messages:
+      emitCustomerDiscountExpired.message:
+        $ref: '#/components/messages/CustomerDiscountExpired'
+  customerWonRewardForMerchantReferral:
+    address: customerWonRewardForMerchantReferral
+    messages:
+      emitCustomerWonRewardForMerchantReferral.message:
+        $ref: '#/components/messages/CustomerWonRewardForMerchantReferral'
+operations:
+  emitCustomerIsPremium:
+    action: receive
+    channel:
+      $ref: '#/channels/customerIsPremium'
+    summary: Emit CustomerIsPremium event
+    messages:
+      - $ref: '#/channels/customerIsPremium/messages/emitCustomerIsPremium.message'
+  handleCustomerIsPremium:
+    action: send
+    channel:
+      $ref: '#/channels/customerIsPremium'
+    summary: Handle CustomerIsPremium event
+    messages:
+      - $ref: '#/channels/customerIsPremium/messages/handleCustomerIsPremium.message'
+  emitCustomerPremiumSubscriptionLevelUpgraded:
+    action: receive
+    channel:
+      $ref: '#/channels/customerPremiumSubscriptionLevelUpgraded'
+    summary: Emit CustomerPremiumSubscriptionLevelUpgraded event
+    messages:
+      - $ref: >-
+          #/channels/customerPremiumSubscriptionLevelUpgraded/messages/emitCustomerPremiumSubscriptionLevelUpgraded.message
+  handleCustomerPremiumSubscriptionLevelUpgraded:
+    action: send
+    channel:
+      $ref: '#/channels/customerPremiumSubscriptionLevelUpgraded'
+    summary: Handle CustomerPremiumSubscriptionLevelUpgraded event
+    messages:
+      - $ref: >-
+          #/channels/customerPremiumSubscriptionLevelUpgraded/messages/handleCustomerPremiumSubscriptionLevelUpgraded.message
+  emitNotifyCustomerAboutPremium:
+    action: receive
+    channel:
+      $ref: '#/channels/notifyCustomerAboutPremium'
+    summary: Emit NotifyCustomerAboutPremium event
+    messages:
+      - $ref: >-
+          #/channels/notifyCustomerAboutPremium/messages/emitNotifyCustomerAboutPremium.message
+  handleNotifyCustomerAboutPremium:
+    action: send
+    channel:
+      $ref: '#/channels/notifyCustomerAboutPremium'
+    summary: Handle NotifyCustomerAboutPremium event
+    messages:
+      - $ref: >-
+          #/channels/notifyCustomerAboutPremium/messages/handleNotifyCustomerAboutPremium.message
+  handleCustomerInvoiced:
+    action: send
+    channel:
+      $ref: '#/channels/customerInvoiced'
+    summary: Handle CustomerInvoiced event
+    messages:
+      - $ref: '#/channels/customerInvoiced/messages/handleCustomerInvoiced.message'
+  handleInvoiceCanceled:
+    action: send
+    channel:
+      $ref: '#/channels/invoiceCanceled'
+    summary: Handle InvoiceCanceled event
+    messages:
+      - $ref: '#/channels/invoiceCanceled/messages/handleInvoiceCanceled.message'
+  handleCustomRejectedInvoice:
+    action: send
+    channel:
+      $ref: '#/channels/customRejectedInvoice'
+    summary: Handle CustomRejectedInvoice event
+    messages:
+      - $ref: >-
+          #/channels/customRejectedInvoice/messages/handleCustomRejectedInvoice.message
+  handleInvoiceStamped:
+    action: send
+    channel:
+      $ref: '#/channels/invoiceStamped'
+    summary: Handle InvoiceStamped event
+    messages:
+      - $ref: '#/channels/invoiceStamped/messages/handleInvoiceStamped.message'
+  handleInvoiceNotStampedOnTime:
+    action: send
+    channel:
+      $ref: '#/channels/invoiceNotStampedOnTime'
+    summary: Handle InvoiceNotStampedOnTime event
+    messages:
+      - $ref: >-
+          #/channels/invoiceNotStampedOnTime/messages/handleInvoiceNotStampedOnTime.message
+  handleMerchantSignedTermsAndConditions:
+    action: send
+    channel:
+      $ref: '#/channels/merchantSignedTermsAndConditions'
+    summary: Handle MerchantSignedTermsAndConditions event
+    messages:
+      - $ref: >-
+          #/channels/merchantSignedTermsAndConditions/messages/handleMerchantSignedTermsAndConditions.message
+  handleStartMerchantSubscription:
+    action: send
+    channel:
+      $ref: '#/channels/startMerchantSubscription'
+    summary: Handle StartMerchantSubscription event
+    messages:
+      - $ref: >-
+          #/channels/startMerchantSubscription/messages/handleStartMerchantSubscription.message
+  handleStartNewMerchantSubscriptionPeriod:
+    action: send
+    channel:
+      $ref: '#/channels/startNewMerchantSubscriptionPeriod'
+    summary: Handle StartNewMerchantSubscriptionPeriod event
+    messages:
+      - $ref: >-
+          #/channels/startNewMerchantSubscriptionPeriod/messages/handleStartNewMerchantSubscriptionPeriod.message
+  emitMerchantSubscriptionCanceled:
+    action: receive
+    channel:
+      $ref: '#/channels/merchantSubscriptionCanceled'
+    summary: Emit MerchantSubscriptionCanceled event
+    messages:
+      - $ref: >-
+          #/channels/merchantSubscriptionCanceled/messages/emitMerchantSubscriptionCanceled.message
+  handleMerchantSubscriptionCanceled:
+    action: send
+    channel:
+      $ref: '#/channels/merchantSubscriptionCanceled'
+    summary: Handle MerchantSubscriptionCanceled event
+    messages:
+      - $ref: >-
+          #/channels/merchantSubscriptionCanceled/messages/handleMerchantSubscriptionCanceled.message
+  handleCheckCustomerPremiumSubscriptionStatus:
+    action: send
+    channel:
+      $ref: '#/channels/checkCustomerPremiumSubscriptionStatus'
+    summary: Handle CheckCustomerPremiumSubscriptionStatus event
+    messages:
+      - $ref: >-
+          #/channels/checkCustomerPremiumSubscriptionStatus/messages/handleCheckCustomerPremiumSubscriptionStatus.message
+  emitReferredMerchantSignedUp:
+    action: receive
+    channel:
+      $ref: '#/channels/referredMerchantSignedUp'
+    summary: Emit ReferredMerchantSignedUp event
+    messages:
+      - $ref: >-
+          #/channels/referredMerchantSignedUp/messages/emitReferredMerchantSignedUp.message
+  handleReferredMerchantSignedUp:
+    action: send
+    channel:
+      $ref: '#/channels/referredMerchantSignedUp'
+    summary: Handle ReferredMerchantSignedUp event
+    messages:
+      - $ref: >-
+          #/channels/referredMerchantSignedUp/messages/handleReferredMerchantSignedUp.message
+  handleMerchantPaymentMethodAdded:
+    action: send
+    channel:
+      $ref: '#/channels/merchantPaymentMethodAdded'
+    summary: Handle MerchantPaymentMethodAdded event
+    messages:
+      - $ref: >-
+          #/channels/merchantPaymentMethodAdded/messages/handleMerchantPaymentMethodAdded.message
+  emitReferredMerchantIssuedFirstInvoice:
+    action: receive
+    channel:
+      $ref: '#/channels/referredMerchantIssuedFirstInvoice'
+    summary: Emit ReferredMerchantIssuedFirstInvoice event
+    messages:
+      - $ref: >-
+          #/channels/referredMerchantIssuedFirstInvoice/messages/emitReferredMerchantIssuedFirstInvoice.message
+  emitMerchantPremiumSubscriptionPeriodEnded:
+    action: receive
+    channel:
+      $ref: '#/channels/merchantPremiumSubscriptionPeriodEnded'
+    summary: Emit MerchantPremiumSubscriptionPeriodEnded event
+    messages:
+      - $ref: >-
+          #/channels/merchantPremiumSubscriptionPeriodEnded/messages/emitMerchantPremiumSubscriptionPeriodEnded.message
+  emitMerchantPremiumSubscriptionPeriodStarted:
+    action: receive
+    channel:
+      $ref: '#/channels/merchantPremiumSubscriptionPeriodStarted'
+    summary: Emit MerchantPremiumSubscriptionPeriodStarted event
+    messages:
+      - $ref: >-
+          #/channels/merchantPremiumSubscriptionPeriodStarted/messages/emitMerchantPremiumSubscriptionPeriodStarted.message
+  emitMerchantSubscriptionStarted:
+    action: receive
+    channel:
+      $ref: '#/channels/merchantSubscriptionStarted'
+    summary: Emit MerchantSubscriptionStarted event
+    messages:
+      - $ref: >-
+          #/channels/merchantSubscriptionStarted/messages/emitMerchantSubscriptionStarted.message
+  emitCustomerDiscountExpired:
+    action: receive
+    channel:
+      $ref: '#/channels/customerDiscountExpired'
+    summary: Emit CustomerDiscountExpired event
+    messages:
+      - $ref: >-
+          #/channels/customerDiscountExpired/messages/emitCustomerDiscountExpired.message
+  emitCustomerWonRewardForMerchantReferral:
+    action: receive
+    channel:
+      $ref: '#/channels/customerWonRewardForMerchantReferral'
+    summary: Emit CustomerWonRewardForMerchantReferral event
+    messages:
+      - $ref: >-
+          #/channels/customerWonRewardForMerchantReferral/messages/emitCustomerWonRewardForMerchantReferral.message
+components:
+  messages:
+    CustomerIsPremium:
+      name: CustomerIsPremium
+      title: CustomerIsPremium
+      summary: Event indicating a customer is premium.
+      contentType: application/json
+      payload:
+        type: object
+        properties:
+          CustomerPremiumSubscriptionId:
+            type: string
+            format: uuid
+          CustomerId:
+            type: string
+            format: uuid
+          Level:
+            type: integer
+    CustomerPremiumSubscriptionLevelUpgraded:
+      name: CustomerPremiumSubscriptionLevelUpgraded
+      title: CustomerPremiumSubscriptionLevelUpgraded
+      summary: >-
+        Event indicating a customer's premium subscription level has been
+        upgraded.
+      contentType: application/json
+      payload:
+        type: object
+        properties:
+          CustomerPremiumSubscriptionId:
+            type: string
+            format: uuid
+          CustomerId:
+            type: string
+            format: uuid
+          UpgradedOn:
+            type: string
+            format: date-time
+          NewLevel:
+            type: integer
+          PreviousLevel:
+            type: integer
+    NotifyCustomerAboutPremium:
+      name: NotifyCustomerAboutPremium
+      title: NotifyCustomerAboutPremium
+      summary: Event to notify customer about their premium status.
+      contentType: application/json
+      payload:
+        type: object
+        properties:
+          CustomerId:
+            type: string
+            format: uuid
+          PremiumSubscriptionId:
+            type: string
+            format: uuid
+    CustomerInvoiced:
+      name: CustomerInvoiced
+      title: CustomerInvoiced
+      summary: Event indicating a customer has been invoiced.
+      contentType: application/json
+      payload:
+        type: object
+        properties:
+          InvoiceId:
+            type: string
+            format: uuid
+    InvoiceCanceled:
+      name: InvoiceCanceled
+      title: InvoiceCanceled
+      summary: Event indicating an invoice has been canceled.
+      contentType: application/json
+      payload:
+        type: object
+        properties:
+          InvoiceId:
+            type: string
+            format: uuid
+          CanceledOn:
+            type: string
+            format: date-time
+    CustomRejectedInvoice:
+      name: CustomRejectedInvoice
+      title: CustomRejectedInvoice
+      summary: Event indicating an invoice has been rejected.
+      contentType: application/json
+      payload:
+        type: object
+        properties:
+          InvoiceId:
+            type: string
+            format: uuid
+          RejectedOn:
+            type: string
+            format: date-time
+    InvoiceStamped:
+      name: InvoiceStamped
+      title: InvoiceStamped
+      summary: Event indicating an invoice has been stamped.
+      contentType: application/json
+      payload:
+        type: object
+        properties:
+          InvoiceId:
+            type: string
+            format: uuid
+          StampedOn:
+            type: string
+            format: date-time
+    InvoiceNotStampedOnTime:
+      name: InvoiceNotStampedOnTime
+      title: InvoiceNotStampedOnTime
+      summary: Event indicating an invoice was not stamped on time.
+      contentType: application/json
+      payload:
+        type: object
+        properties:
+          InvoiceId:
+            type: string
+            format: uuid
+    MerchantSignedTermsAndConditions:
+      name: MerchantSignedTermsAndConditions
+      title: MerchantSignedTermsAndConditions
+      summary: Event indicating a merchant signed terms and conditions.
+      contentType: application/json
+      payload:
+        type: object
+        properties:
+          MerchantId:
+            type: string
+            format: uuid
+          Type:
+            type: string
+    StartMerchantSubscription:
+      name: StartMerchantSubscription
+      title: StartMerchantSubscription
+      summary: Event to start a merchant subscription.
+      contentType: application/json
+      payload:
+        type: object
+        properties:
+          MerchantId:
+            type: string
+            format: uuid
+          SubscriptionId:
+            type: string
+            format: uuid
+          StartDate:
+            type: string
+            format: date-time
+          IsTrial:
+            type: boolean
+          TrialDuration:
+            type: integer
+          Type:
+            type: string
+    StartNewMerchantSubscriptionPeriod:
+      name: StartNewMerchantSubscriptionPeriod
+      title: StartNewMerchantSubscriptionPeriod
+      summary: Event to start a new merchant subscription period.
+      contentType: application/json
+      payload:
+        type: object
+        properties:
+          SubscriptionId:
+            type: string
+            format: uuid
+          PeriodId:
+            type: string
+            format: uuid
+    MerchantSubscriptionCanceled:
+      name: MerchantSubscriptionCanceled
+      title: MerchantSubscriptionCanceled
+      summary: Event indicating a merchant subscription has been canceled.
+      contentType: application/json
+      payload:
+        type: object
+        properties:
+          SubscriptionId:
+            type: string
+            format: uuid
+          CanceledOn:
+            type: string
+            format: date-time
+          MerchantId:
+            type: string
+            format: uuid
+    CheckCustomerPremiumSubscriptionStatus:
+      name: CheckCustomerPremiumSubscriptionStatus
+      title: CheckCustomerPremiumSubscriptionStatus
+      summary: Event to check the status of a customer's premium subscription.
+      contentType: application/json
+      payload:
+        type: object
+        properties:
+          SubscriptionId:
+            type: string
+            format: uuid
+    ReferredMerchantSignedUp:
+      name: ReferredMerchantSignedUp
+      title: ReferredMerchantSignedUp
+      summary: Event indicating a referred merchant has signed up.
+      contentType: application/json
+      payload:
+        type: object
+        properties:
+          MerchantId:
+            type: string
+            format: uuid
+          ReferredBy:
+            type: string
+            format: uuid
+          ReferredFrom:
+            type: string
+          SignedUpOn:
+            type: string
+            format: date-time
+    MerchantPaymentMethodAdded:
+      name: MerchantPaymentMethodAdded
+      title: MerchantPaymentMethodAdded
+      summary: Event indicating a merchant payment method has been added.
+      contentType: application/json
+      payload:
+        type: object
+        properties:
+          MerchantId:
+            type: string
+            format: uuid
+    ReferredMerchantIssuedFirstInvoice:
+      name: ReferredMerchantIssuedFirstInvoice
+      title: ReferredMerchantIssuedFirstInvoice
+      summary: Event indicating a referred merchant issued their first invoice.
+      contentType: application/json
+      payload:
+        type: object
+        properties:
+          InvoiceId:
+            type: string
+            format: uuid
+          IssuedOn:
+            type: string
+            format: date-time
+          MerchantId:
+            type: string
+            format: uuid
+          ReferredFrom:
+            type: string
+          ReferredBy:
+            type: string
+            format: uuid
+    MerchantPremiumSubscriptionPeriodEnded:
+      name: MerchantPremiumSubscriptionPeriodEnded
+      title: MerchantPremiumSubscriptionPeriodEnded
+      summary: Event indicating a merchant premium subscription period has ended.
+      contentType: application/json
+      payload:
+        type: object
+        properties:
+          EndedOn:
+            type: string
+            format: date-time
+          StartedOn:
+            type: string
+            format: date-time
+          ExtraDiscountCodeIssued:
+            type: boolean
+          ExtraDiscountCodePrice:
+            type: number
+          MerchantId:
+            type: string
+            format: uuid
+          PeriodId:
+            type: string
+            format: uuid
+          SubscriptionId:
+            type: string
+            format: uuid
+          SubscriptionPrice:
+            type: number
+          IsFree:
+            type: boolean
+    MerchantPremiumSubscriptionPeriodStarted:
+      name: MerchantPremiumSubscriptionPeriodStarted
+      title: MerchantPremiumSubscriptionPeriodStarted
+      summary: Event indicating a merchant premium subscription period has started.
+      contentType: application/json
+      payload:
+        type: object
+        properties:
+          MerchantId:
+            type: string
+            format: uuid
+          StartedOn:
+            type: string
+            format: date-time
+          SubscriptionId:
+            type: string
+            format: uuid
+          PeriodId:
+            type: string
+            format: uuid
+    MerchantSubscriptionStarted:
+      name: MerchantSubscriptionStarted
+      title: MerchantSubscriptionStarted
+      summary: Event indicating a merchant subscription has started.
+      contentType: application/json
+      payload:
+        type: object
+        properties:
+          MerchantId:
+            type: string
+            format: uuid
+          SubscriptionId:
+            type: string
+            format: uuid
+          SubscriptionType:
+            type: string
+          TrialDuration:
+            type: integer
+          StartedOn:
+            type: string
+            format: date-time
+    CustomerDiscountExpired:
+      name: CustomerDiscountExpired
+      title: CustomerDiscountExpired
+      summary: Event indicating a customer discount has expired.
+      contentType: application/json
+      payload:
+        type: object
+        properties:
+          CustomerId:
+            type: string
+            format: uuid
+          DiscountId:
+            type: string
+            format: uuid
+          ExpiredOn:
+            type: string
+            format: date-time
+    CustomerWonRewardForMerchantReferral:
+      name: CustomerWonRewardForMerchantReferral
+      title: CustomerWonRewardForMerchantReferral
+      summary: Event indicating a customer won a reward for referring a merchant.
+      contentType: application/json
+      payload:
+        type: object
+        properties:
+          CustomerId:
+            type: string
+            format: uuid
+          RewardId:
+            type: string
+            format: uuid
+          WonOn:
+            type: string
+            format: date-time
